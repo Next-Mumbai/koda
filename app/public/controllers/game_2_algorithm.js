@@ -253,13 +253,14 @@ setTimeout(function(){
      * check ineach array if value is equal to in the correctSequence array
      * if true go to next page
      */
-    $scope.clicked = function() {
 
-        $('.alert').show();
-        setTimeout(function() {
-            $('.alert').hide();
-        }, 2000);
-        if ($scope.correctSequence[0].rule == $scope.droppedObjects1[0].rule) {
+$scope.clicked = function() {
+if($scope.droppedObjects1[0]==undefined){
+  $('.alert').show();
+  setTimeout(function() {
+      $('.alert').hide();
+  }, 2000);
+}else if ($scope.correctSequence[0].rule == $scope.droppedObjects1[0].rule) {
             if ($scope.correctSequence[1].rule == $scope.droppedObjects2[0].rule || $scope.correctSequence[2].rule == $scope.droppedObjects2[0].rule ) {
                 if ($scope.correctSequence[2].rule == $scope.droppedObjects3[0].rule || $scope.correctSequence[1].rule == $scope.droppedObjects3[0].rule) {
                     if ($scope.correctSequence[3].rule == $scope.droppedObjects4[0].rule || $scope.correctSequence[4].rule == $scope.droppedObjects4[0].rule) {
@@ -269,27 +270,15 @@ setTimeout(function(){
                             console.log("success");
                             $('.alert').hide();
 
-                            // $state.go('typesOfChar3');
                         }
                     }
                 }
             }
-        } else {
-
-            if ($scope.droppedObjects1[0].rule !== [] && $scope.droppedObjects2[0].rule !== [] && $scope.droppedObjects3[0].rule !== [] && $scope.droppedObjects4[0].rule !== [] && $scope.droppedObjects5[0].rule !== []) {
-  console.log($scope.droppedObjects1[0].rule !== []);
-                $('.alert').hide();
-                $('.alertbox').show();
-                setTimeout(function() {
-                    $('.alertbox').hide();
-                }, 2000);
-            } else {
-                $('.alert').show();
-                setTimeout(function() {
-                    $('.alert').hide();
-                }, 2000);
-            }
+        }else{
+            $('.alertbox').show();
+            setTimeout(function() {
+                $('.alertbox').hide();
+            }, 2000);
         }
-
     }
 });
